@@ -13,7 +13,7 @@ export class ProductController {
     async get(@Param('id') id: string){
 
     }
-    @Delete
+    @Delete(':id')
     async delete(@Param('id') id: string) {
 
     }
