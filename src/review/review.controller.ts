@@ -8,7 +8,7 @@ export class ReviewController {
 
     }
 
-    @Delete
+    @Delete()
     async delete(@Param('id') id: string) {
 
     }

@@ -6,10 +6,12 @@ import {TopPageModule} from './top-page/top-page.module';
 import {ProductModule} from './product/product.module';
 import {ReviewModule} from './review/review.module';
 import {ConfigModule} from "@nestjs/config";
+import {MongooseModule} from "@nestjs/mongoose";
 
 @Module({
     imports: [
         ConfigModule.forRoot(),
+        MongooseModule.forRoot('mongodb://localhost/mongo'),
         AuthModule,
         TopPageModule,
         ProductModule,

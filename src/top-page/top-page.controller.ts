@@ -13,18 +13,18 @@ export class TopPageController {
     async get(@Param('id') id: string){
 
     }
-    @Delete
+    @Delete()
     async delete(@Param('id') id: string) {
 
     }
     @Patch(':id')
-    async patch(@Param('id') id: string, @Body dto: TopPageModel){
+    async patch(@Param('id') id: string, @Body() dto: TopPageModel){
 
     }
 
     @HttpCode(200)
-    @Post
-    async find(@Body dto: FindTopPageDto){
+    @Post()
+    async find(@Body() dto: FindTopPageDto){
 
     }
 }

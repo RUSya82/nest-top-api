@@ -18,13 +18,13 @@ export class ProductController {
 
     }
     @Patch(':id')
-    async patch(@Param('id') id: string, @Body dto: ProductModel){
+    async patch(@Param('id') id: string, @Body() dto: ProductModel){
 
     }
 
     @HttpCode(200)
-    @Post
-    async find(@Body dto: FindProductDto){
+    @Post()
+    async find(@Body() dto: FindProductDto){
 
     }
 }
