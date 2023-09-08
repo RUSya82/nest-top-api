@@ -5,7 +5,7 @@ import {ProductModel} from "../../product/product.model/product.model";
 
 export type ReviewDocument = HydratedDocument<ReviewModel>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class ReviewModel {
     @Prop()
     name: string;
