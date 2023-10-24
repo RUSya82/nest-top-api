@@ -6,7 +6,6 @@ import {CreateReviewDto} from '../src/review/dto/create-review.dto';
 import {disconnect, Types} from 'mongoose';
 import {REVIEW_NOT_FOUND} from '../src/review/review.constans';
 
-
 const productId = new Types.ObjectId().toHexString();
 
 const testDto: CreateReviewDto = {
@@ -31,10 +30,7 @@ describe('AppController (e2e)', () => {
     });
 
     it('/review/create (POST) - success', async () => {
-        let {body}: request.Response = await request(app.getHttpServer())
-            .post('/review/create')
-            .send(testDto)
-            .expect(201);
+        let {body}: request.Response = await request(app.getHttpServer()).post('/review/create').send(testDto).expect(201);
         // .then(({ body }: request.Response) => {
         createdId = body._id;
         expect(createdId).toBeDefined();
@@ -64,14 +60,12 @@ describe('AppController (e2e)', () => {
             .expect(200)
             .then(({body}: request.Response) => {
                 expect(body.length).toBeGreaterThan(0);
-
             });
     });
     it('/review/:id (DELETE) - success', () => {
         return request(app.getHttpServer())
             .delete('/review/' + createdId)
             .expect(200);
-
     });
     it('/review/:id (DELETE) - failed', () => {
         return request(app.getHttpServer())
@@ -80,9 +74,13 @@ describe('AppController (e2e)', () => {
                 statusCode: 404,
                 message: REVIEW_NOT_FOUND,
             });
-
     });
-    afterAll(() => {
-        disconnect();
+    // afterAll(() => {
+    //     disconnect();
+    //     app.close();
+    // });
+    afterAll(async () => {
+        await app.close(); // Закрытие NestJS-приложения
+        await disconnect(); // Это случай с MongoDB и Mongoose ODM
     });
 });

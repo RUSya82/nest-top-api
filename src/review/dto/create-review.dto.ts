@@ -6,6 +6,7 @@ export class CreateReviewDto {
 
     @IsString()
     title: string;
+
     @IsString()
     description: string;
 
